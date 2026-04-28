@@ -5,10 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Locale;
 
@@ -61,6 +58,11 @@ class Response{
 @RequestMapping("/webhook")
 class WebhookController {
     private static final Logger logger = LoggerFactory.getLogger(WebhookController.class);
+
+    @GetMapping("/")
+    public ResponseEntity<String> home() {
+        return ResponseEntity.ok("WhatsApp Chatbot Backend is running live!");
+    }
 
     @PostMapping
     public ResponseEntity<Response> handleMessage(@RequestBody IncoimgMessage message) {
