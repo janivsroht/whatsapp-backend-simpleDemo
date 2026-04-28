@@ -55,7 +55,7 @@ class Response{
 }
 
 @RestController
-@RequestMapping("/webhook")
+//@RequestMapping("/webhook")
 class WebhookController {
     private static final Logger logger = LoggerFactory.getLogger(WebhookController.class);
 
@@ -64,7 +64,7 @@ class WebhookController {
         return ResponseEntity.ok("WhatsApp Chatbot Backend is running live!");
     }
 
-    @PostMapping
+    @PostMapping("/webhook")
     public ResponseEntity<Response> handleMessage(@RequestBody IncoimgMessage message) {
         logger.info("IncoimgMessage received: Sender:[{}], Text:[{}]", message.getSender(), message.getText());
 
